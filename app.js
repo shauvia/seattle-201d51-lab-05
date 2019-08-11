@@ -58,7 +58,7 @@ function sumAndMultiply(a, b, c) { //eslint-disable-line
   return [sumOfThree[0], productOfThree[0], a + ' and ' + b + ' and ' + c + ' sum to ' + sumOfThree[0] + '.', 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + productOfThree[0] + '.'];
 }
   
-  // console.log(sumAndMultiply(2,3,2));
+
 
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -127,9 +127,7 @@ Test this function by hand in the console to get it working, and when you think 
 function multiplyArray(multArr) { //eslint-disable-line
   var productOfTwo = multiply(multArr[0], multArr[1]);
   var productOfThree = multiply(productOfTwo[0],multArr[2]);
-  // console.log(productOfThree);
   var message = "The numbers " + returnsMessage(multArr) + 'have a product of ' + productOfThree[0] + '.';
-  // console.log(message);
   return [productOfThree[0], message];
 }
 
