@@ -15,7 +15,7 @@ function sum(a, b) { //eslint-disable-line
 }
 
 // Here is the test for sum(); uncomment it to run it
-// testSum(4, 7);
+testSum(4, 7);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -34,7 +34,7 @@ function multiply(a, b) { //eslint-disable-line
 }
 
 // Here is the test for multiply(); uncomment it to run it
-// testMultiply(5,9);
+testMultiply(5,9);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -62,7 +62,7 @@ function sumAndMultiply(a, b, c) { //eslint-disable-line
 
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
-// testSumAndMultiply(4,7,5);
+testSumAndMultiply(4,7,5);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -85,10 +85,8 @@ function returnsMessage(testArray){
   for (var i = 0; i < testArray.length; i++){
     if (i === (testArray.length-1)){
       numbers += testArray[i] + ' ';
-      // console.log(numbers);
     } else{ 
     numbers += testArray[i] + ',';
-    // console.log(numbers);
     }
   }
   return numbers 
@@ -97,19 +95,13 @@ function returnsMessage(testArray){
 function sumArray(sumArr) { //eslint-disable-line
   var sumOfFirstTwoEl = sum(sumArr[0], sumArr[1]);
   var sumOfPrevious = sumOfFirstTwoEl[0];
-  console.log(sumArr)
-  console.log('wynik dodania dwóch pierwszych liczb ' + sumOfPrevious);
   if (sumArr.length>2){
     for(var i = 2; i < sumArr.length; i++) {
-      console.log(sumOfPrevious, ' array od i ' + sumArr[i]);
       var sumRseult = sum(sumOfPrevious, sumArr[i]);
-      console.log(sumRseult + ' to jest array');
-      console.log(sumRseult[0] + ' wynik dodawania ' + sumOfPrevious + " and " + sumArr[i]);
       var sumOfPrevious = sumRseult[0];
     }
   }
   var message = 'was passed in as an array of numbers, and ' + sumOfPrevious + ' is their sum.'
-  console.log(message);
   return[sumOfPrevious, returnsMessage(sumArr) + message];
 }
 
@@ -133,11 +125,17 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
-
+  var productOfTwo = multiply(multArr[0], multArr[1]);
+  var productOfThree = multiply(productOfTwo[0],multArr[2]);
+  // console.log(productOfThree);
+  var message = "The numbers " + returnsMessage(multArr) + 'have a product of ' + productOfThree[0] + '.';
+  // console.log(message);
+  return [productOfThree[0], message];
 }
 
+
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray(testArray);
+testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop.
 
