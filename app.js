@@ -9,13 +9,13 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sum(a, b) { //eslint-disable-line
-  let sum = a + b;
+  var sum = a + b;
   var message = 'The sum of ' + a + ' and ' + b + ' is ' + sum + '.';
   return [sum, message]
 }
 
 // Here is the test for sum(); uncomment it to run it
-testSum(4, 7);
+// testSum(4, 7);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -34,7 +34,7 @@ function multiply(a, b) { //eslint-disable-line
 }
 
 // Here is the test for multiply(); uncomment it to run it
-testMultiply(5,9);
+// testMultiply(5,9);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -58,11 +58,11 @@ function sumAndMultiply(a, b, c) { //eslint-disable-line
   return [sumOfThree[0], productOfThree[0], a + ' and ' + b + ' and ' + c + ' sum to ' + sumOfThree[0] + '.', 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + productOfThree[0] + '.'];
 }
   
-  console.log(sumAndMultiply(2,3,2));
+  // console.log(sumAndMultiply(2,3,2));
 
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
-testSumAndMultiply(4,7,5);
+// testSumAndMultiply(4,7,5);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -72,20 +72,52 @@ Write a function called sumArray() that takes in an array of numbers as its sing
 
 "2,3,4 was passed in as an array of numbers, and 9 is their sum."
 
-IMPORTANT DETAIL: You may not use the arithmetic operator + in this function. To do addition, use your sum() function that you've already created. You're going to have to be resourceful to figure out how to do this. However, you may continue to use the + operator for string concatenation.
+IMPORTANT DETAIL: You may not use the arithmetic operator + in this function. To do addition, use your sum() function that you've already created. You're going to have to be resourceful to figure out how to do this. However , you may continue to use the + operator for string concatenation.
 
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSumArray() function and see if the test passes.*/
 
 // Write your code here
 var testArray = [2, 3, 4]; //eslint-disable-line
 
-function sumArray(sumArr) { //eslint-disable-line
-
+// Ewa's comment: The instruction does't say that I'm working only on 3 element array, so I assumed that the array cen be longer, that's why I'm itereting over an array; 
+function returnsMessage(testArray){
+  var numbers = ''
+  for (var i = 0; i < testArray.length; i++){
+    if (i === (testArray.length-1)){
+      numbers += testArray[i] + ' ';
+      // console.log(numbers);
+    } else{ 
+    numbers += testArray[i] + ',';
+    // console.log(numbers);
+    }
+  }
+  return numbers 
 }
+
+function sumArray(sumArr) { //eslint-disable-line
+  var sumOfFirstTwoEl = sum(sumArr[0], sumArr[1]);
+  var sumOfPrevious = sumOfFirstTwoEl[0];
+  console.log(sumArr)
+  console.log('wynik dodania dwóch pierwszych liczb ' + sumOfPrevious);
+  if (sumArr.length>2){
+    for(var i = 2; i < sumArr.length; i++) {
+      console.log(sumOfPrevious, ' array od i ' + sumArr[i]);
+      var sumRseult = sum(sumOfPrevious, sumArr[i]);
+      console.log(sumRseult + ' to jest array');
+      console.log(sumRseult[0] + ' wynik dodawania ' + sumOfPrevious + " and " + sumArr[i]);
+      var sumOfPrevious = sumRseult[0];
+    }
+  }
+  var message = 'was passed in as an array of numbers, and ' + sumOfPrevious + ' is their sum.'
+  console.log(message);
+  return[sumOfPrevious, returnsMessage(sumArr) + message];
+}
+
+
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
